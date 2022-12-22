@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <Routes>
         <Route path='/'element={ <HomePage />} />
       </Routes>
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
