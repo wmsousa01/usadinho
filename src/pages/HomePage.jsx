@@ -1,5 +1,7 @@
 import React from 'react'
 
+
+
 const HomePage = () => {
   return (
     <div className="HomePage">
@@ -14,9 +16,7 @@ const HomePage = () => {
         </div>
       
       <div className='col'>
-        <div className='row'>
         Palavra 2
-        </div>
       </div>
     </div>
     </div>
