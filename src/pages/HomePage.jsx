@@ -14,7 +14,6 @@ const HomePage = () => {
         <div className='col'>
         Palavra 1
         </div>
-      
       <div className='col'>
         Palavra 2
       </div>
