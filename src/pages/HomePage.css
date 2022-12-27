@@ -1,0 +1,51 @@
+.h1 {
+    font-family: 'Work Sans';
+    font-style: normal;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 33.8278px;
+    mix-blend-mode: normal;
+
+    width: 10vw;
+}
+
+.HomePage {
+    background-size:cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    padding: 0px;
+    margin: 0px;
+    height: 95vh;
+    border: 0px;
+    width: 80vw;
+
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFF;
+    margin: 1rem;
+    font-family: 'Work Sans';
+}
+
+.divCardInicial{
+    margin-top: 2vh;
+    display: flex;
+    justify-content: end;
+}
+
+.card-text {
+    margin-bottom: 0px;
+    margin-top: 3vh;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.col {
+    margin-left: 3vw;
+   
+}
