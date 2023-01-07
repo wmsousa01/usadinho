@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import Card from '../components/Card'
+import Card from './Card'
 
 
-const ViewCollectionPage = () => {
+const ViewCollection = () => {
     const [products, setProduct] = useState([])
 
     useEffect(() => {
@@ -17,8 +17,8 @@ const ViewCollectionPage = () => {
 
     return (
         <div className="ViewCollectionPage">
-            <div className="row">
-                <div className="col">
+            <div className="">
+                <div className="">
                     <h1>Temos { products.length } produtos disponiveis</h1>
                 </div>
             </div>
@@ -37,4 +37,4 @@ const ViewCollectionPage = () => {
     )
 }
 
-export default ViewCollectionPage
+export default ViewCollection

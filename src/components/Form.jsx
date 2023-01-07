@@ -58,13 +58,7 @@ const Form = () => {
     }
 
   return (
-    <div>
-        <div className='header'>
-          <h1 className='h1'>U</h1>
-          <div className='qv'>Quero Vender</div>
-
-        </div>
-          
+    <div>  
         <div className="row">
             <div className="col">
                         <img width={400} src={imageUrl ? imageUrl : 'https://via.placeholder.com/400x500'} alt="product" />
@@ -116,7 +110,7 @@ const Form = () => {
                             onChange={ e => setDesc (e.target.value) }
                         />
                         <div className='divCardInicial'>
-                        <button type='submit' className='btn btn-primary'>Enviar</button>
+                            <button type='submit' className='btn btn-primary'>Enviar</button>
                         </div>
                     </div>
                 </div>
