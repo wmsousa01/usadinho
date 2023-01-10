@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import '../components/Card.css'
 
 const Card = ({ product}) => {
   return (
-    <div>
+    <div className='Card'>
         <div key={product._id} className="card" style={{width: "18rem"}}>
         <img src={product.imageUrl} className="card-img-top" alt="..." />
             <div className="card-body">

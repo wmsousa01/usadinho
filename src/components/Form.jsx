@@ -115,6 +115,7 @@ const Form = () => {
                     </div>
                 </div>
             </form>
+            location.reload()
         </div>
       </div>
     </div>
