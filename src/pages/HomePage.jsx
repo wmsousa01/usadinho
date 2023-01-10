@@ -2,7 +2,7 @@ import React from 'react'
 import '../pages/HomePage.css'
 import background from '../images/BGHomePage.png'
 import Form from '../components/Form'
-import ViewCollectionPage from '../components/ViewCollection'
+import ViewCollection from '../components/ViewCollection'
 
 
 
@@ -16,7 +16,7 @@ const HomePage = () => {
         <h1>Nossos Produtos</h1>
         <div className='row'>
           <div className=''>
-            <ViewCollectionPage />
+            <ViewCollection />
           </div>
         </div>
       </div>
