@@ -3,7 +3,7 @@ import React from 'react'
 import { Link, useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import Bike from '../images/bike.png'
+import Swal from 'sweetalert2'
 
 const ProductPage = () => {
     const { itemId } = useParams()
@@ -17,6 +17,14 @@ const ProductPage = () => {
             })
             .catch(err => console.log(err))
     }, [itemId])
+
+    function HandleClick() {  
+        Swal.fire({  
+          title: 'Parabéns',  
+          type: 'success',  
+          text: 'Seu pedido foi processado e esta a caminho.',  
+        });  
+      } 
 
   return (
     <div>
@@ -35,7 +43,7 @@ const ProductPage = () => {
                                 <p>Estado: { product.condition }</p>
                                 <p>Descrição: {product.desc }</p>
 
-                                <Link className='btn btn-primary me-2' to={`/`}>Comprar</Link>
+                                <button className='btn btn-primary me-2' onClick= {() => HandleClick()}>Comprar </button>
                             </div>
 
                             <div className='divCardInicial'>
