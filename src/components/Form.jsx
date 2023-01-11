@@ -48,14 +48,23 @@ const Form = () => {
         axios.post(`${process.env.REACT_APP_API_URL}/usadinho`, updatedProduct)
             .then(response => {
                 Swal.fire({
-                    title: 'Success!',
-                    text: 'Product successfully updated!',
+                    title: 'Produto cadastrado!',
+                    text: 'Seu produto foi cadastrado com sucesso!',
                     icon: 'success',
-                    confirmButtonText: 'Cool'
+                    confirmButtonText: 'Confirmar'
+                    
                 })
+                
+                refreshPage()
+                
             })
             .catch(err => console.log(err))
     }
+
+    function refreshPage() {
+        setTimeout(() => {
+        window.location.reload(false);
+      }, 2000); }
 
   return (
     <div>  
@@ -64,7 +73,6 @@ const Form = () => {
                         <img width={400} src={imageUrl ? imageUrl : 'https://via.placeholder.com/400x500'} alt="product" />
             </div>
           <div className="col">
-            
             <form onSubmit={handleSubmit}>
                 <div className="card" style={{width: '20vw'}}>
                     <div className="card-body">
@@ -115,7 +123,7 @@ const Form = () => {
                     </div>
                 </div>
             </form>
-            location.reload()
+            
         </div>
       </div>
     </div>
