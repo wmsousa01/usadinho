@@ -102,13 +102,18 @@ const Form = () => {
                             onChange={ e => setPrice(e.target.value) }
                         />
                         <p className='card-text'>ESTADO</p>
-                        <input 
-                            type="text" 
-                            className="form-control" 
-                            id="condition" 
-                            value={condition}
-                            onChange={ e => setCondition(e.target.value) }
-                        />
+                        <select 
+                                className="form-select" 
+                                type="text" 
+                                aria-label="Default select example"
+                                value={condition}
+                                onChange={ e => setCondition(e.target.value) }
+                            >
+                                <option value="Novo">Novo</option>
+                                <option value="Usado">Usado</option>
+                                <option value="Semi Novo">Semi Novo</option>
+                                
+                            </select>
                         <p className='card-text'>DESCRIÇÃO</p>
                         <input 
                             type="text" 

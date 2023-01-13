@@ -64,18 +64,18 @@ const EditProductPage = () => {
         <div className="EditItemPage">
             <div className="row">
                 <div className="col">
-                    <h1>Usadinho- Editar Produto</h1>
+                    <h2 className="mt-5">Editar Produto</h2>
                 </div>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col">
-                        <img width={400} src={imageUrl ? imageUrl : 'https://via.placeholder.com/400x500'} alt="product" />
+                        <img width={600} src={imageUrl ? imageUrl : 'https://via.placeholder.com/400x500'} alt="product" />
                     </div>
-                    <div className="col">
-                    <div className="card" style={{width: '20vw'}}>
+                    <div className="col p-2">
+                    <div className="card border border-success rounded p-2" style={{width: '20vw'}}>
                         <div className="card-body">
-                            <h5 className="card-title">Querendo divulgar aquelas bugigangas que não usa mais?</h5>
+                            <h5 className="card-title">Atualize as informações do seu produto</h5>
                             <p className='card-text'>IMAGEM</p>
                             <input 
                                 type="text" 
@@ -101,13 +101,19 @@ const EditProductPage = () => {
                                 onChange={ e => setPrice(e.target.value) }
                             />
                             <p className='card-text'>ESTADO</p>
-                            <input 
+                            <select 
+                                className="form-select" 
                                 type="text" 
-                                className="form-control" 
-                                id="condition" 
+                                aria-label="Default select example"
                                 value={condition}
                                 onChange={ e => setCondition(e.target.value) }
-                            />
+                            >
+                                <option value="Novo">Novo</option>
+                                <option value="Usado">Usado</option>
+                                <option value="Semi Novo">Semi Novo</option>
+                                
+                            </select>
+                            
                             <p className='card-text'>DESCRIÇÃO</p>
                             <input 
                                 type="text" 
