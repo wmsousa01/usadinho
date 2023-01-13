@@ -20,7 +20,7 @@ const ViewCollection = () => {
         <div className="ViewCollectionPage">
             <div className="">
                 <div className="">
-                    <h1>Temos { products.length } produtos disponiveis</h1>
+                    <h3 className='p-3'>Temos { products.length } produtos disponiveis</h3>
                 </div>
             </div>
             

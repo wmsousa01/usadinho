@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import '../pages/LoginPage.css'
 
 const LoginPage = () => {
   return (
-    <div>
+    <div id='login' className='border border-success rounded'>
         <div className="sidenav">
          <div className="login-main-text">
             <h2>Entre com o seu usuário </h2>
