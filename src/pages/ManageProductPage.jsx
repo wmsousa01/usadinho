@@ -23,10 +23,10 @@ const ManageProductPage = () => {
     }
 
     return (
-        <div className="ManageItemsPage">
+        <div className="ManageItemsPage mt-5 border border-success rounded">
             <div className="row">
                 <div className="col">
-                    <h1>Usadinho - Gerencie seus produtos</h1>
+                    <h2 className="mt-2 text-uppercase">Gerencie seus produtos</h2>
                 </div>
             </div>
             <div className="row">
@@ -46,7 +46,7 @@ const ManageProductPage = () => {
                                 return (
                                     <tr key={product._id}>
                                         <td>{ product.name }</td>
-                                        <td>{ product.price }</td>
+                                        <td>R$ { Number(product.price).toFixed(2) }</td>
                                         <td>
                                             <Link className='btn btn-primary me-2' to={`/ProductPage/${product._id}`}>Ver</Link>
                                             <Link className='btn btn-primary me-2' to={`/ProductPage/${product._id}/edit`}>Editar</Link>

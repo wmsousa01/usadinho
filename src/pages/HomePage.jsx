@@ -9,11 +9,13 @@ import ViewCollection from '../components/ViewCollection'
 const HomePage = () => {
   return (
     <div>
-      <div className="HomePage" style={{backgroundImage:`url(${background})`}}> 
-       <Form />
+      <div className="HomePage mw-100" style={{backgroundImage:`url(${background})`}}> 
+        <div id='form'>
+          <Form />
+        </div>
       </div>
       <div className='pt-5 container text-center'>
-        <h1>Nossos Produtos</h1>
+        <h1 className='text-uppercase border border-primary rounded'>Nossos Produtos</h1>
         <div className='row'>
           <div className=''>
             <ViewCollection />

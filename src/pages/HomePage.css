@@ -22,14 +22,12 @@
 
 }
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #FFF;
-    margin: 1rem;
-    font-family: 'Work Sans';
+#form {
+    padding-top: 5%;
+    padding: 5%;
 }
+
+
 
 .divCardInicial{
     margin-top: 2vh;
