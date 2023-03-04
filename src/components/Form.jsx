@@ -10,13 +10,14 @@ const Form = () => {
     const [condition, setCondition] = useState('')
     const [desc, setDesc] = useState('')
     const [loading, setLoading] = useState(true)
+    const [picture, setPicture] = useState('')
     
     const { itemId } = useParams()
 
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/usadinho/${itemId}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/products/${itemId}`)
             .then(response => {
                 let { 
                     name, 
@@ -34,6 +35,17 @@ const Form = () => {
             })
     }, [itemId])
 
+     const handleUpload = e => {
+            const uploadData = new FormData()
+            uploadData.append('productPicture', e.target.files[0])
+            axios.post('http://localhost:3001/products/upload', uploadData)
+                .then(response => {
+                    setPicture(response.data.url)
+                    alert('upload ok')
+                })
+                .catch(err => console.log(err))
+        }
+
     const handleSubmit = e => {
         e.preventDefault()
 
@@ -44,8 +56,13 @@ const Form = () => {
             condition, 
             desc
         }
+        const token = localStorage.getItem('token')
 
-        axios.post(`${process.env.REACT_APP_API_URL}/usadinho`, updatedProduct)
+        const headers = {
+            'Authorization': 'Bearer ' + token
+        }
+
+        axios.post(`${process.env.REACT_APP_API_URL}/products`, updatedProduct, {headers})
             .then(response => {
                 Swal.fire({
                     title: 'Produto cadastrado!',
@@ -79,12 +96,9 @@ const Form = () => {
                         <h5 className="card-title">Querendo divulgar aquelas bugigangas que não usa mais?</h5>
                         <p className='card-text'>IMAGEM</p>
                         <input 
-                            type="text" 
-                            className="form-control" 
-                            id="imageUrl" 
-                            value={imageUrl}
-                            onChange={ e => setImageUrl(e.target.value) }
-                        />
+                            type="file" 
+                            onChange={e => handleUpload(e)} 
+                            />
                         <p className='card-text'>NOME DO PRODUTO</p>
                         <input 
                             type="text" 
@@ -109,9 +123,9 @@ const Form = () => {
                                 value={condition}
                                 onChange={ e => setCondition(e.target.value) }
                             >
-                                <option value="Novo">Novo</option>
-                                <option value="Usado">Usado</option>
-                                <option value="Semi Novo">Semi Novo</option>
+                                <option value="novo">Novo</option>
+                                <option value="usado">Usado</option>
+                                <option value="semi-novo">Semi Novo</option>
                                 
                             </select>
                         <p className='card-text'>DESCRIÇÃO</p>
