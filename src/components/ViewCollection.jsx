@@ -9,12 +9,14 @@ const ViewCollection = () => {
     const [products, setProduct] = useState([])
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/usadinho`)
+        axios.get(`${process.env.REACT_APP_API_URL}/products`)
             .then(response => {
                 setProduct(response.data)
             })
             .catch(err => console.log(err))
     }, [])
+
+    console.log(products)
 
     return (
         <div className="ViewCollectionPage">

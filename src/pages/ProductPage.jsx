@@ -9,9 +9,10 @@ const ProductPage = () => {
     const { itemId } = useParams()
 
     const [product, setProduct] = useState(null)
+    
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/usadinho/${itemId}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/products/${itemId}`)
             .then(response => {
                 setProduct(response.data)
             })

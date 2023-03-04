@@ -14,7 +14,8 @@ const Navbar = () => {
                   width={40}
                   />
               </Link>
-                <Link className='btn btn-primary me-2' to={`/LoginPage`}>Sou Vendedor</Link>
+                <Link className='btn btn-primary me-2' to={`/LoginPage`}>Login</Link>
+                <Link className='btn btn-primary me-2' to={`/ProductPage/manage`}>Meus Produtos</Link>
             </div>
         </nav>
     </div>

@@ -1,13 +1,20 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import Form from "../components/Form"
 
 const ManageProductPage = () => {
     const [product, setProduct] = useState([])
     const [refresh, setRefresh] = useState(false)
 
+    const token = localStorage.getItem('token')
+
+        const headers = {
+            'Authorization': 'Bearer ' + token
+        }
+
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/usadinho`)
+        axios.get(`${process.env.REACT_APP_API_URL}/manage`, {headers})
             .then(response => {
                 setProduct(response.data)
             })
@@ -15,7 +22,7 @@ const ManageProductPage = () => {
     }, [refresh])
 
     const deleteProduct = productId => {
-        axios.delete(`${process.env.REACT_APP_API_URL}/usadinho/${productId}`)
+        axios.delete(`${process.env.REACT_APP_API_URL}/manage/${productId}`, {headers})
             .then(response => {
                 setRefresh(!refresh)
             })
@@ -23,6 +30,12 @@ const ManageProductPage = () => {
     }
 
     return (
+        <div>
+            <div>
+                <h1>Cadastre um novo produto</h1>
+                <Form />
+            </div>
+
         <div className="ManageItemsPage mt-5 border border-success rounded">
             <div className="row">
                 <div className="col">
@@ -59,9 +72,9 @@ const ManageProductPage = () => {
                     </tbody>
                 </table>
                     )}
-
                 </div>
             </div>
+        </div>
         </div>
     )
 }
