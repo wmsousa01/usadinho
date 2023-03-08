@@ -8,10 +8,13 @@ import EditProductPage from './pages/EditProductPage';
 import ViewCollectionPage from './components/ViewCollection';
 import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
+import AppProvider from "./context/AuthProvider";
 
 function App() {
   return (
     <div className="container">
+
+      <AppProvider>
       
       <Navbar />
 
@@ -23,6 +26,8 @@ function App() {
         <Route path='/ProductPage/:itemId/edit' element={ <EditProductPage />} />
         <Route path='/LoginPage' element={ <LoginPage />} />
       </Routes>
+
+      </AppProvider>
       
     </div>
   );
