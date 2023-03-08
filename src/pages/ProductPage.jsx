@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Link, useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -54,7 +53,7 @@ const ProductPage = () => {
                     ) : (
                         <p>Sorry, no product.</p>
                     )
-                }
+                } 
             </div>
     </div>
   )

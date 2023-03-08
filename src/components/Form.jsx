@@ -16,6 +16,54 @@ const Form = () => {
 
     const navigate = useNavigate()
 
+    const token = localStorage.getItem('token')
+
+        const headers = {
+            'Authorization': 'Bearer ' + token
+        }
+
+
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        const updatedProduct = {
+            product:name,  
+            price, 
+            condition, 
+            desc,
+            picture
+        }
+        
+        console.log(updatedProduct)
+
+        axios.post(`${process.env.REACT_APP_API_URL}/manage`, updatedProduct, {headers})
+        .then(response => {
+            Swal.fire({
+                title: 'Produto cadastrado!',
+                text: 'Seu produto foi cadastrado com sucesso!',
+                icon: 'success',
+                confirmButtonText: 'Confirmar'
+                
+            })
+            
+            refreshPage()
+            
+        })
+        .catch(err => console.log(err))
+}
+
+        const handleUpload = e => {
+            const uploadData = new FormData()
+            uploadData.append('productImage', e.target.files[0])
+            axios.post('http://localhost:3001/upload', uploadData, {headers})
+                .then(response => {
+                    setPicture(response.data.url)
+                    alert('upload ok')
+                })
+                .catch(err => console.log(err))
+        }
+        console.log(picture)
+
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/products/${itemId}`)
             .then(response => {
@@ -35,48 +83,8 @@ const Form = () => {
             })
     }, [itemId])
 
-     const handleUpload = e => {
-            const uploadData = new FormData()
-            uploadData.append('productPicture', e.target.files[0])
-            axios.post('http://localhost:3001/products/upload', uploadData)
-                .then(response => {
-                    setPicture(response.data.url)
-                    alert('upload ok')
-                })
-                .catch(err => console.log(err))
-        }
-
-    const handleSubmit = e => {
-        e.preventDefault()
-
-        const updatedProduct = {
-            name, 
-            imageUrl, 
-            price, 
-            condition, 
-            desc
-        }
-        const token = localStorage.getItem('token')
-
-        const headers = {
-            'Authorization': 'Bearer ' + token
-        }
-
-        axios.post(`${process.env.REACT_APP_API_URL}/products`, updatedProduct, {headers})
-            .then(response => {
-                Swal.fire({
-                    title: 'Produto cadastrado!',
-                    text: 'Seu produto foi cadastrado com sucesso!',
-                    icon: 'success',
-                    confirmButtonText: 'Confirmar'
-                    
-                })
-                
-                refreshPage()
-                
-            })
-            .catch(err => console.log(err))
-    }
+    
+       
 
     function refreshPage() {
         setTimeout(() => {
@@ -137,7 +145,7 @@ const Form = () => {
                             onChange={ e => setDesc (e.target.value) }
                         />
                         <div className='divCardInicial'>
-                            <button type='submit' className='btn btn-primary'>Enviar</button>
+                            <button type='submit' disabled={!picture} className='btn btn-primary'>Enviar</button>
                         </div>
                     </div>
                 </div>
