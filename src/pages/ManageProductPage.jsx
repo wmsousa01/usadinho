@@ -7,12 +7,14 @@ const ManageProductPage = () => {
     const [product, setProduct] = useState([])
     const [refresh, setRefresh] = useState(false)
 
-    const token = localStorage.getItem('token')
+    const storedUser = JSON.parse(localStorage.getItem('loggedInUser'))
+   
 
-        const headers = {
-            'Authorization': 'Bearer ' + token
-        }
+    const headers = {
+        'Authorization': `Bearer ${storedUser.jwt}`
+    }
 
+   
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/manage`, {headers})
             .then(response => {

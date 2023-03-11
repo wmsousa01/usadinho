@@ -9,10 +9,13 @@ const ProductPage = () => {
 
     const [product, setProduct] = useState(null)
     
+    
+    
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/products/${itemId}`)
             .then(response => {
+                console.log(response.data)
                 setProduct(response.data)
             })
             .catch(err => console.log(err))
@@ -35,7 +38,7 @@ const ProductPage = () => {
                         <>  
                             
                             <div className="col">
-                                <img width={600} src={ product.imageUrl ? product.imageUrl : 'https://via.placeholder.com/400x500' } alt="product" />
+                                <img width={600} src={product.picture ? product.picture : 'https://via.placeholder.com/400x500'} alt="product" />
                             </div>
                             <div className="col border border-success rounded p-2">
                                 <h2>{ product.name }</h2>
