@@ -8,13 +8,13 @@ import EditProductPage from './pages/EditProductPage';
 import ViewCollectionPage from './components/ViewCollection';
 import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
-import AppProvider from "./context/AuthProvider";
+import AuthProvider from './context/auth.context';
 
 function App() {
   return (
     <div className="container">
 
-      <AppProvider>
+     
       
       <Navbar />
 
@@ -27,7 +27,7 @@ function App() {
         <Route path='/LoginPage' element={ <LoginPage />} />
       </Routes>
 
-      </AppProvider>
+     
       
     </div>
   );

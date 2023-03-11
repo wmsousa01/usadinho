@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import AppContext from "../context/AuthContext.js";
+import { AuthContext } from '../context/auth.context';
 
 const Navbar = () => {
-  const { userName } = useContext(AppContext);
   
+  const { isLoading, loggedInUser } = useContext(AuthContext)
+
   return (
     <div>
         <nav className="navbar navbar-expand-lg navbar-dark" style={{background: "#008489"}}>
@@ -16,9 +17,22 @@ const Navbar = () => {
                   width={40}
                   />
               </Link>
-                <Link className='btn btn-primary me-2' to={`/LoginPage`}>Login</Link>
-                <Link className='btn btn-primary me-2' to={`/ProductPage/manage`}>Meus Produtos</Link>
-                <Link className='btn btn-primary me-2' to={`/ProductPage/manage`}>{userName}</Link>
+                
+                {!isLoading && (
+                  <>
+                  
+                  <Link className='btn btn-primary me-2' to={`/ProductPage/manage`}>{loggedInUser.user}</Link>
+                  <Link className='btn btn-primary me-2' to={`/ProductPage/manage`}>Meus Produtos</Link>
+                  </>
+                )}
+               
+                  <>
+                  
+                  <Link className='btn btn-primary me-2' to={`/LoginPage`}>Login</Link>
+                 </>
+                
+              
+
             </div>
         </nav>
     </div>

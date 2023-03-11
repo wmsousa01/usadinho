@@ -1,9 +1,10 @@
-import React from 'react'
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import '../pages/LoginPage.css'
 import axios from 'axios'
-import { useState, useContext } from 'react';
-import AppContext from "../context/AuthContext.js";
+import { AuthContext } from '../context/auth.context';
+import { responsivePropType } from 'react-bootstrap/esm/createUtilityClasses';
+
 
 
 const LoginPage = (props) => {
@@ -15,7 +16,7 @@ const LoginPage = (props) => {
 
    const navigate = useNavigate()
 
-   const { setToken, setUserName } = useContext(AppContext);
+   const { setToken, setUserName , refresh, setRefresh} = useContext(AuthContext)
 
    const handleSubmitLogin = e => {
       e.preventDefault()
@@ -27,11 +28,12 @@ const LoginPage = (props) => {
 
       axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, newUser)
       .then(response => {
-          localStorage.setItem('token', response.data.jwt)
+          localStorage.setItem('loggedInUser',JSON.stringify(response.data))
           setToken(response.data.jwt);
           setUserName(response.data.user)
           setEmail('')
           setPassword('')
+          setRefresh(!refresh)
           navigate('/')
       })
       .catch(error => console.log(error))
@@ -47,7 +49,10 @@ const LoginPage = (props) => {
 
       axios.post(`${process.env.REACT_APP_API_URL}/auth/sign-up`, newUser)
       .then(response => {
+
+         localStorage.setItem('loggedInUser',JSON.stringify(response.data))
           if(response.status === 201) {
+              setToken(response.data.jwt)
               setName('')
               setEmailSignUp('')
               setPasswordSignUp('')

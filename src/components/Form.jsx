@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
@@ -11,17 +11,23 @@ const Form = () => {
     const [desc, setDesc] = useState('')
     const [loading, setLoading] = useState(true)
     const [picture, setPicture] = useState('')
+    const [userName, setUserName] = useState('')
     
     const { itemId } = useParams()
 
     const navigate = useNavigate()
 
-    const token = localStorage.getItem('token')
+   const storedUser = JSON.parse(localStorage.getItem('loggedInUser'))
+   
 
-        const headers = {
-            'Authorization': 'Bearer ' + token
-        }
+    const headers = {
+        'Authorization': `Bearer ${storedUser.jwt}`
+    }
 
+   useEffect(() => {
+        setUserName(storedUser.user)
+        
+    })
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -46,7 +52,7 @@ const Form = () => {
                 
             })
             
-            refreshPage()
+           // refreshPage()
             
         })
         .catch(err => console.log(err))
@@ -62,13 +68,13 @@ const Form = () => {
                 })
                 .catch(err => console.log(err))
         }
-        console.log(picture)
-
-    useEffect(() => {
+        
+   /* useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/products/${itemId}`)
             .then(response => {
                 let { 
-                    name, 
+                    name,
+                    picture,
                     imageUrl, 
                     price, 
                     condition, 
@@ -79,9 +85,10 @@ const Form = () => {
                 setPrice(price)
                 setCondition(condition)
                 setDesc(desc)
+                setPicture(picture)
                 setLoading(false)
             })
-    }, [itemId])
+    }, [itemId]) */
 
     
        
@@ -95,7 +102,7 @@ const Form = () => {
     <div>  
         <div className="row">
             <div className="col">
-                        <img width={400} src={imageUrl ? imageUrl : 'https://via.placeholder.com/400x500'} alt="product" />
+                        <img width={400} src={picture ? picture : 'https://via.placeholder.com/400x500'} alt="product" />
             </div>
           <div className="col">
             <form onSubmit={handleSubmit}>
@@ -131,6 +138,7 @@ const Form = () => {
                                 value={condition}
                                 onChange={ e => setCondition(e.target.value) }
                             >
+                                <option value=""></option>
                                 <option value="novo">Novo</option>
                                 <option value="usado">Usado</option>
                                 <option value="semi-novo">Semi Novo</option>

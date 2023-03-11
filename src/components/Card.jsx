@@ -6,7 +6,7 @@ const Card = ({ product}) => {
   return (
     <div className='Card'>
         <div key={product._id} className="card bg-light mb-3" style={{width: "18rem"}}>
-        <img src={product.imageUrl} className="card-img-top" alt="..." width={300} height={300}/>
+        <img src={product.picture} className="card-img-top" alt="..." width={300} height={300}/>
             <div className='card-header'>{ product.name }</div>
               <div className='card-body'>
                 <h5 className='card-title'>Preço: { Number(product.price).toFixed(2) }</h5>
