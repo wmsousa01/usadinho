@@ -51,8 +51,11 @@ const Form = () => {
                 confirmButtonText: 'Confirmar'
                 
             })
-            
-           // refreshPage()
+            if (updatedProduct){
+                setTimeout(() => {
+                    window.location.reload(false);
+                  }, 2000);
+            }
             
         })
         .catch(err => console.log(err))
@@ -102,7 +105,7 @@ const Form = () => {
     <div>  
         <div className="row">
             <div className="col">
-                        <img width={400} src={picture ? picture : 'https://via.placeholder.com/400x500'} alt="product" />
+                        <img height={500} width={500} src={picture ? picture : 'https://via.placeholder.com/400x500'} alt="product" />
             </div>
           <div className="col">
             <form onSubmit={handleSubmit}>
@@ -110,7 +113,9 @@ const Form = () => {
                     <div className="card-body">
                         <h5 className="card-title">Querendo divulgar aquelas bugigangas que não usa mais?</h5>
                         <p className='card-text'>IMAGEM</p>
-                        <input 
+                        <label className="p-2 fw-light">*Formatos permitidos jpg, png e webp.</label>
+                        <input
+                            className="form-control"
                             type="file" 
                             onChange={e => handleUpload(e)} 
                             />

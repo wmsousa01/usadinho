@@ -27,8 +27,14 @@ const AuthProvider = ({children}) => {
         }
     }, [refresh])
 
+    const removeToken = () => {                    
+        localStorage.removeItem("loggedInUser");
+        navigate('/')
+        window.location.reload()
+      }
+
     return (
-        <AuthContext.Provider value={{isLoading, loggedInUser, setLoggedInUser, userName, setUserName, setToken, refresh, setRefresh}}>
+        <AuthContext.Provider value={{isLoading, loggedInUser, setLoggedInUser, userName, setUserName, setToken, refresh, setRefresh, removeToken}}>
             { children }
         </AuthContext.Provider>
 

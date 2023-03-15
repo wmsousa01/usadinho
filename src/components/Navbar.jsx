@@ -4,7 +4,7 @@ import { AuthContext } from '../context/auth.context';
 
 const Navbar = () => {
   
-  const { isLoading, loggedInUser } = useContext(AuthContext)
+  const { isLoading, loggedInUser, removeToken } = useContext(AuthContext)
 
   return (
     <div>
@@ -21,15 +21,18 @@ const Navbar = () => {
                 {!isLoading && (
                   <>
                   
-                  <Link className='btn btn-primary me-2' to={`/ProductPage/manage`}>{loggedInUser.user}</Link>
-                  <Link className='btn btn-primary me-2' to={`/ProductPage/manage`}>Meus Produtos</Link>
+                    <Link className='btn btn-primary me-2' to={`/ProductPage/manage`}>{loggedInUser.user}</Link>
+                    <Link className='btn btn-primary me-2' to={`/ProductPage/manage`}>Meus Produtos</Link>
+                    <Link><button className='btn btn-primary me-2' onClick={removeToken}>Logout</button></Link>
+
                   </>
                 )}
+                {isLoading && (
                
                   <>
-                  
-                  <Link className='btn btn-primary me-2' to={`/LoginPage`}>Login</Link>
-                 </>
+                    <Link className='btn btn-primary me-2' to={`/LoginPage`}>Login</Link>
+                  </>
+                )}   
                 
               
 
