@@ -60,7 +60,7 @@ const ManageProductPage = () => {
                             product.map(product => {
                                 return (
                                     <tr key={product._id}>
-                                        <td>{ product.name }</td>
+                                        <td>{ product.product }</td>
                                         <td>R$ { Number(product.price).toFixed(2) }</td>
                                         <td>
                                             <Link className='btn btn-primary me-2' to={`/ProductPage/${product._id}`}>Ver</Link>
