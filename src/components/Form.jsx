@@ -64,7 +64,7 @@ const Form = () => {
         const handleUpload = e => {
             const uploadData = new FormData()
             uploadData.append('productImage', e.target.files[0])
-            axios.post('http://localhost:3001/upload', uploadData, {headers})
+            axios.post(`${process.env.REACT_APP_API_URL}/upload`, uploadData, {headers})
                 .then(response => {
                     setPicture(response.data.url)
                     alert('upload ok')
