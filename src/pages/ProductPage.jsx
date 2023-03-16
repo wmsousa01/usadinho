@@ -47,6 +47,7 @@ const ProductPage = () => {
                             <div className="col border border-success rounded p-2">
                                 <h2>{ product.product }</h2>
                                 <h3>Preço: { Number(product.price).toFixed(2) }</h3>
+                                <p>{product.desc}</p>
                                 <p> { product.condition }</p>
                                 <p>{product.comments.user }</p>
 
