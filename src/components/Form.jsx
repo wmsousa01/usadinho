@@ -12,6 +12,7 @@ const Form = () => {
     const [loading, setLoading] = useState(true)
     const [picture, setPicture] = useState('')
     const [userName, setUserName] = useState('')
+    const [refresh,setRefresh] = useState (false)
     
     const { itemId } = useParams()
 
@@ -52,9 +53,7 @@ const Form = () => {
                 
             })
             if (updatedProduct){
-                setTimeout(() => {
-                    window.location.reload(false);
-                  }, 2000);
+                navigate('/')
             }
             
         })
@@ -71,35 +70,7 @@ const Form = () => {
                 })
                 .catch(err => console.log(err))
         }
-        
-   /* useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/products/${itemId}`)
-            .then(response => {
-                let { 
-                    name,
-                    picture,
-                    imageUrl, 
-                    price, 
-                    condition, 
-                    desc
-                } = response.data
-                setName(name)
-                setImageUrl(imageUrl)
-                setPrice(price)
-                setCondition(condition)
-                setDesc(desc)
-                setPicture(picture)
-                setLoading(false)
-            })
-    }, [itemId]) */
-
-    
        
-
-    function refreshPage() {
-        setTimeout(() => {
-        window.location.reload(false);
-      }, 2000); }
 
   return (
     <div>  
