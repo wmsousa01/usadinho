@@ -1,7 +1,7 @@
 
 # Usadinho.com
 
-Ununcie seu produto novo ou usado de uma forma rapida e prática
+Anuncie seu produto novo ou usado de uma forma rapida e prática
 
 
 
